@@ -1,0 +1,60 @@
+---
+title: "notes"
+output: html_document
+date: "2025-01-24"
+---
+
+### Load package
+
+```{r}
+library(tidyverse)
+```
+
+### Load Data
+
+Open the file
+
+```{r}
+f <- "/Users/anjiesu/Downloads/data-wrangling.csv"
+d <- read_csv(f, col_names = T)
+```
+
+### Data Structure
+
+Check the class, structure, and glimpse of the dataset
+
+```{r}
+class(d)
+str(d)
+glimpse(d)
+```
+
+### View Data
+
+Pull up the first 100 rows and the last 2 rows of the dataset
+
+```{r}
+head(d, 100)
+tail(d, 2)
+```
+
+### Manipulate Data
+
+Combine the `Genus` and `Species` columns
+
+```{r}
+sciname <- paste0(d$Genus, " ", d$Species)
+sciname <- tolower(sciname)
+head(sciname)
+```
+
+### Plot Data
+
+Visualize the relationship between brain and body mass
+
+```{r}
+body <- d$Body_mass_female_mean
+brain <- d$Brain_Size_Species_Mean
+plot(brain, body)
+plot(log(brain), log(body))
+```
